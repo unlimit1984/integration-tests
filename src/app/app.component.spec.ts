@@ -1,31 +1,37 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { By } from "@angular/platform-browser";
+import { RouterLinkWithHref, RouterOutlet } from "@angular/router";
+import { RouterTestingModule } from "@angular/router/testing";
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule.withRoutes([])],
       declarations: [
         AppComponent
       ],
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'integration-tests'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('integration-tests');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('integration-tests app is running!');
   });
+
+  it('should have a router outlet', () => {
+    let de = fixture.debugElement.query(By.directive(RouterOutlet));
+    expect(de).not.toBeNull();
+  });
+
+  it('should have a link to todos page', () => {
+    let debugElements = fixture.debugElement.queryAll(By.directive(RouterLinkWithHref));
+    let index = debugElements.findIndex(de => de.properties['href']==='/todos');
+    expect(index).toBeGreaterThan(-1);
+  });
+
 });
