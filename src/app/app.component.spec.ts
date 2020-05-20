@@ -4,6 +4,7 @@ import { By } from "@angular/platform-browser";
 import { RouterOutlet } from "@angular/router";
 import { RouterTestingModule } from "@angular/router/testing";
 import { NO_ERRORS_SCHEMA } from "@angular/core";
+import { NavComponent } from "./nav/nav.component";
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -14,9 +15,9 @@ describe('AppComponent', () => {
       imports: [RouterTestingModule.withRoutes([])],
       declarations: [
         AppComponent//,
-        //NavComponent // 1st approach
+        // NavComponent // 1st approach
       ],
-      schemas: [NO_ERRORS_SCHEMA] //2nd approach
+       schemas: [NO_ERRORS_SCHEMA] //2nd approach*/
     }).compileComponents();
   }));
 

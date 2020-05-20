@@ -11,6 +11,7 @@ import { UsersComponent } from "./users/users.component";
 import { RouterModule } from "@angular/router";
 import { routes } from "./app.routes";
 import { NavComponent } from './nav/nav.component';
+import { HighlightDirective } from "./highlight.directive";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NavComponent } from './nav/nav.component';
     UserDetailsComponent,
     HomeComponent,
     UsersComponent,
-    NavComponent
+    NavComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
